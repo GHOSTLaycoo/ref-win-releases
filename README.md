@@ -10,7 +10,7 @@
 - [查看所有版本与更新说明](https://github.com/GHOSTLaycoo/ref-win-releases/releases)
 - [下载最新版本的 SHA-256 校验文件](https://github.com/GHOSTLaycoo/ref-win-releases/releases/latest/download/SHA256SUMS.txt)
 
-目前为预览版本。支持 Windows 10 / Windows 11，需要 .NET Framework 4.8。使用 OCR 时，需要系统安装对应语言的文字识别包。
+目前为预览版本。支持 Windows 10 / Windows 11，需要 .NET Framework 4.8。v0.6.15 在 x64 Windows 上内置简体中文和英语 OCR。
 
 ## 运行
 
@@ -29,12 +29,31 @@
 
 更多操作见[完整操作手册](https://github.com/GHOSTLaycoo/Ref-w/blob/main/docs/操作手册.md)。
 
+## 其他 OCR 语言
+
+Ref for Windows v0.6.15 在 x64 Windows 上内置简体中文和英语 OCR，可以离线识别中英混排的截图。其他语言使用 Windows 提供的 OCR 组件。若内置识别引擎无法启动，Ref 会尝试系统 OCR。
+
+1. Windows 11 打开 **设置 → 时间和语言 → 语言和区域**。Windows 10 打开 **设置 → 时间和语言 → 语言**。
+2. 在「首选语言」中选择「添加语言」，安装要识别的语言。可以保留原来的 Windows 显示语言。
+3. 从系统托盘退出并重新打开 Ref，然后在主窗口「开始标注」旁的「OCR 语言」下拉框中，选择带「Windows」字样的目标语言。
+
+如果添加后仍未出现在 Ref 中，可以在管理员 Windows PowerShell 中运行 `Get-WindowsCapability -Online -Name 'Language.OCR*'` 查看可用语言。以法语（法国）为例，依次安装基础语言和 OCR 组件。
+
+```powershell
+Add-WindowsCapability -Online -Name 'Language.Basic~~~fr-FR~0.0.1.0'
+Add-WindowsCapability -Online -Name 'Language.OCR~~~fr-FR~0.0.1.0'
+```
+
+组件安装完成后再次重启 Ref。并非所有语言都有 Windows OCR 组件。[微软语言安装说明](https://support.microsoft.com/zh-cn/windows/hardware/input-devices/manage-the-language-and-keyboard-input-layout-settings-in-windows) · [Windows OCR 组件说明](https://learn.microsoft.com/zh-cn/windows-hardware/manufacture/desktop/features-on-demand-language-fod?view=windows-11#ocr)
+
+内置 OCR 基于 Tesseract，随发布版提供[第三方许可证](https://github.com/GHOSTLaycoo/ref-win-releases/releases/latest/download/THIRD-PARTY-NOTICES.txt)。
+
 ## 校验下载文件
 
 每个版本附带 `SHA256SUMS.txt`。在 PowerShell 中运行以下命令，将结果与校验文件比对：
 
 ```powershell
-Get-FileHash -Algorithm SHA256 .\RefWindows-0.6.14.exe
+Get-FileHash -Algorithm SHA256 .\RefWindows-0.6.15.exe
 ```
 
 ## 更新与反馈

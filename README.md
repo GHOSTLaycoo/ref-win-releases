@@ -2,7 +2,7 @@
 
 一张图，说清楚。Ref for Windows 是驻留系统托盘的截图标注工具：给界面上的控件、文件和区域加上编号与修改要求，再把截图和说明合成为一张 PNG，交给 AI 或同事。
 
-本仓库仅用于发布 **Windows 可执行文件、版本更新说明与校验文件**。源码维护在 [GHOSTLaycoo/Ref-w](https://github.com/GHOSTLaycoo/Ref-w)。
+本仓库仅用于发布 **Windows 可执行文件、版本更新说明与校验文件**。
 
 ## 下载
 

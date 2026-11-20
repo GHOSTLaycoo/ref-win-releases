@@ -27,8 +27,6 @@
 
 截图、OCR 和图片合成在本机完成。自动保存目录为 `%LOCALAPPDATA%\RefWindows\Captures`。
 
-更多操作见[完整操作手册](https://github.com/GHOSTLaycoo/Ref-w/blob/main/docs/操作手册.md)。
-
 ## 其他 OCR 语言
 
 Ref for Windows v0.6.15 在 x64 Windows 上内置简体中文和英语 OCR，可以离线识别中英混排的截图。其他语言使用 Windows 提供的 OCR 组件。若内置识别引擎无法启动，Ref 会尝试系统 OCR。
